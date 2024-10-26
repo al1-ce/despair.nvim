@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
-local canload = require("utils.canload")
-local bufnoremap = require("utils/bufnoremap")
+local canload = require("module").can_load
+local bufnoremap = require("map").bufnoremap
 
 vim.b.wrap = true
 vim.b.spell = true
