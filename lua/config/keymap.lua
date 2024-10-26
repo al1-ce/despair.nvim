@@ -187,7 +187,7 @@ noremap("n", "<leader>fg", function()
     local i = vim.fn.input("Search pattern: ")
     if #i == 0 then vim.notify("Must provide pattern", vim.log.levels.ERROR); return end
     local f = vim.system({ "rg", "-i", "--no-heading", "--type", "all", "--line-number", ".*" .. i .. ".*"}, { text = true }):wait()
-    vim.print(f)
+    -- vim.print(f)
     if f.code == 0 then
         local lines = vim.split(f.stdout, "\n")
         fillqf(lines)
@@ -199,6 +199,46 @@ end, { desc = "[F]ile [G]rep" })
 noremap("n", "<leader>fr", function()
     fillqf(vim.v.oldfiles, function(l) return 'filepath:' .. l end)
 end, { desc = "[F]ind [R]ecent" })
+
+noremap("n", "<leader>rg", function()
+    local g = vim.fn.input("Grep pattern: ")
+    if #g == 0 then
+        vim.notify("No pattern supplied, aborting", vim.log.levels.error)
+        return
+    end
+    local r = vim.fn.input("Replace pattern: ")
+    local c = vim.fn.expand("%:p")
+    local f = vim.system({ "rg", g, "--no-heading", "--line-number", "-r", r, c}, { text = true }):wait()
+    -- vim.notify(vim.inspect(f), vim.log.levels.info)
+    -- rg -F "from-pattern" -r "to-pattern" filename
+    if f.code == 1 then
+        vim.notify("Failed to find pattern " .. g, vim.log.levels.error)
+        return
+    end
+    vim.notify(f.stdout, vim.log.levels.info)
+    local yn = vim.fn.confirm("Do you want to apply changes?", "&Yes/&No", 1)
+    if yn == 1 then return end
+    local lines = vim.split(f.stdout, "\n")
+    for _, line in ipairs(lines) do if #line ~= 0 then
+        local _, e = line:find("%d+:")
+        local l = line:sub(e + 1)
+        local n = tonumber(line:sub(1, e - 1)) - 1
+        -- vim.print(tostring(n) .. "--" .. l)
+        vim.api.nvim_buf_set_lines( 0, n, n + 1, false, { l })
+        -- TODO: add visual replacement
+    end end
+end, { desc = "[R]ip[G]rep" })
+
+noremap("n", "<leader>ft", function()
+    local f = vim.system({ "rg", "--no-heading", "--type", "all", "--line-number", ".*(?:TODO|FIXME|TEMP|REFACTOR|REVIEW|HACK|BUG):.*"}, { text = true }):wait()
+    if #f.stdout == 0 then
+        vim.notify("No todo's found", vim.log.levels.ERROR)
+    else
+        local lines = vim.split(f.stdout, "\n")
+        fillqf(lines)
+    end
+    -- vim.print(f)
+end, { desc = "[F]ind [T]odo" })
 
 -- some netrw mappings
 noremap("n", "-", ':Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>')
