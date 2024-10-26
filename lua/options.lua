@@ -4,7 +4,7 @@ if vim.g.vim_distro == "despair.nvim" then
     vim.loader.enable()
     vim.opt.cmdheight = 1 -- cmd height (set to 0 if no noice)
 elseif vim.g.vim_distro == "monolith.nvim" then
-    vim.opt.cmdheight = 1 -- cmd height (set to 0 if no noice)
+    vim.opt.cmdheight = 0 -- cmd height (set to 0 if no noice)
 else
     vim.opt.cmdheight = 1 -- cmd height (set to 0 if no noice)
 end
