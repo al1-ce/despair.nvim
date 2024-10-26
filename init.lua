@@ -1,13 +1,12 @@
-local load = require("utils.loader")
+local load = require("module").load
 
 vim.g.mapleader = ";"
 
-load('config.options')
-load('config.filetypes')
-load('config.keymap')
-load('config.autocmd')
-load('config.commands')
-load('config.intro')
+load('options')
+load('filetypes')
+load('keymap')
+load('autocmd')
+load('commands')
 
 vim.cmd.colorscheme("gruvbox")
 
