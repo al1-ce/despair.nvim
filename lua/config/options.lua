@@ -42,6 +42,7 @@ vim.opt.shada = "!,'20,f1,<50,s10,h" -- oldfiles config
 
 -- netrw config
 vim.g.netrw_banner = false
+vim.g.netrw_list_hide = "^\\.\\.\\=/\\=$"
 
 vim.g["lsp-timeout-config"] = {
     stopTimeout  = 1000 * 60 * 5,  -- ms, timeout before stopping all LSP servers
