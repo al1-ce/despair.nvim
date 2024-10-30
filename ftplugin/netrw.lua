@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = import "map" .noremap
 local nr = function(from, to)
     noremap("n", from, to, { remap = true, buffer = true, nowait = true })
 end

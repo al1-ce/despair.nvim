@@ -187,8 +187,10 @@ end
 
 noremap("n", "<leader>ff", function()
     local i = vim.fn.input("File pattern: ")
-    if #i == 0 then error("Must provide pattern"); return end
-    local f = vim.system({"bash", "-c", "rg --files . | rg -i '.*" .. i .. ".*'"}, { text = true }):wait()
+    if #i == 0 then
+        error("Must provide pattern"); return
+    end
+    local f = vim.system({ "bash", "-c", "rg --files . | rg -i '" .. i .. "'" }, { text = true }):wait()
     if #f.stdout == 0 then
         error("Failed to find " .. i)
     else
@@ -200,8 +202,11 @@ end, { desc = "[F]ind [F]iles" })
 
 noremap("n", "<leader>fg", function()
     local i = vim.fn.input("Search pattern: ")
-    if #i == 0 then error("Must provide pattern"); return end
-    local f = vim.system({ "rg", "-i", "--no-heading", "--type", "all", "--line-number", ".*" .. i .. ".*"}, { text = true }):wait()
+    if #i == 0 then
+        error("Must provide pattern"); return
+    end
+    local f = vim.system({ "rg", "-i", "--no-heading", "--line-number", i },
+        { text = true }):wait()
     -- vim.print(f)
     if f.code == 0 then
         local lines = vim.split(f.stdout, "\n")
@@ -223,29 +228,33 @@ noremap("n", "<leader>rg", function()
     end
     local r = vim.fn.input("Replace pattern: ")
     local c = vim.fn.expand("%:p")
-    local f = vim.system({ "rg", g, "--no-heading", "--line-number", "-r", r, c}, { text = true }):wait()
+    local f = vim.system({ "rg", g, "--no-heading", "--line-number", "-r", r, c }, { text = true }):wait()
     -- info(vim.inspect(f))
     -- rg -F "from-pattern" -r "to-pattern" filename
     if f.code == 1 then
         error("Failed to find pattern " .. g)
         return
     end
-    -- info(f.stdout)
+    info(f.stdout)
     local yn = vim.fn.confirm("Do you want to apply changes?", "&Yes\n&No")
     if yn ~= 1 then return end
     local lines = vim.split(f.stdout, "\n")
-    for _, line in ipairs(lines) do if #line ~= 0 then
-        local _, e = line:find("%d+:")
-        local l = line:sub(e + 1)
-        local n = tonumber(line:sub(1, e - 1)) - 1
-        -- vim.print(tostring(n) .. "--" .. l)
-        vim.api.nvim_buf_set_lines( 0, n, n + 1, false, { l })
-        -- TODO: add visual replacement
-    end end
+    for _, line in ipairs(lines) do
+        if #line ~= 0 then
+            local _, e = line:find("%d+:")
+            local l = line:sub(e + 1)
+            local n = tonumber(line:sub(1, e - 1)) - 1
+            -- vim.print(tostring(n) .. "--" .. l)
+            vim.api.nvim_buf_set_lines(0, n, n + 1, false, { l })
+            -- TODO: add visual replacement
+        end
+    end
 end, { desc = "[R]ip[G]rep" })
 
 noremap("n", "<leader>ft", function()
-    local f = vim.system({ "rg", "--no-heading", "--type", "all", "--line-number", ".*(?:TODO|FIXME|TEMP|REFACTOR|REVIEW|HACK|BUG):.*"}, { text = true }):wait()
+    local f = vim.system(
+    { "rg", "--no-heading", "--type", "all", "--line-number", ".*(?:TODO|FIXME|TEMP|REFACTOR|REVIEW|HACK|BUG):.*" },
+        { text = true }):wait()
     if #f.stdout == 0 then
         error("No todo's found")
     else
@@ -258,9 +267,16 @@ end, { desc = "[F]ind [T]odo" })
 -- some netrw mappings
 noremap("n", "-", ':Ex <bar> :sil! /<C-R>=expand("%:t")<CR><CR>')
 
-noremap("n", "<leader>bb", "<cmd>!just build<cr>")
-noremap("n", "<leader>bd", "<cmd>!just default<cr>")
-noremap("n", "<leader>br", "<cmd>!just run<cr>")
+noremap("n", "<leader>bd", function() vim.cmd("!just default") end)
+noremap("n", "<leader>bD", function() vim.cmd("!just default") end)
+noremap("n", "<leader>bb", function() vim.cmd("!just build") end)
+noremap("n", "<leader>br", function() vim.cmd("!just run") end)
+noremap("n", "<leader>bR", function() vim.cmd("!just release") end)
+noremap("n", "<leader>bf", function() vim.cmd("!just file " .. vim.fn.expand("%:p")) end)
+noremap("n", "<leader>bt", function() vim.cmd("!just tags") end)
+
+noremap("n", "<leader>co", "<cmd>copen<cr>", { desc = "[C][O]pen" }) 
+noremap("n", "<leader>lo", "<cmd>lopen<cr>", { desc = "[L][O]pen" }) 
 
 -- noremap("n", "<leader>fF", vim.lsp.buf.format, { desc = "[F]ile [F]ormat" })
 -- noremap("n", "<leader>lI", function ()
