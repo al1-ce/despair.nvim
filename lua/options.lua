@@ -82,4 +82,10 @@ vim.cmd([[set guicursor=n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20]])
 vim.cmd([[filetype indent plugin on]])
 vim.cmd([[syntax enable]])
 
+-- Enable plugins and load plugin for the detected file type.
+vim.cmd([[filetype plugin on]])
+-- Enable Omnicomplete features
+vim.cmd([[set omnifunc=syntaxcomplete#Complete]])
+
 vim.cmd("set errorformat^=filepath:%f")
+

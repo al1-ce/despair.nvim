@@ -9,19 +9,19 @@ local function list_dir(dir)
     return vim.split(vim.fn.glob(dir .. "/*"), '\n', { trimempty = true })
 end
 
-for _, path in ipairs(runtimepaths) do
-    local files = list_dir(path .. "/syntax/zdoomlumps")
-    for _, file in ipairs(files) do
-        file = vim.fn.fnamemodify(file, ":t")
-        if file ~= "template-file.vim" then
-            local name = file:replace(".vim", "")
-            local lname = name:lower()
-            local cname = name:upper()
-            zdoomlumps[lname .. ".txt"] = "zdoomlump"
-            zdoomlumps[cname] = "zdoomlump"
-        end
-    end
-end
+-- for _, path in ipairs(runtimepaths) do
+--     local files = list_dir(path .. "/syntax/zdoomlumps")
+--     for _, file in ipairs(files) do
+--         file = vim.fn.fnamemodify(file, ":t")
+--         if file ~= "template-file.vim" then
+--             local name = file:replace(".vim", "")
+--             local lname = name:lower()
+--             local cname = name:upper()
+--             zdoomlumps[lname .. ".txt"] = "zdoomlump"
+--             zdoomlumps[cname] = "zdoomlump"
+--         end
+--     end
+-- end
 
 vim.filetype.add({
     extension = {

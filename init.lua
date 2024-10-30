@@ -1,5 +1,7 @@
 local load = require("module").load
 
+_G.import = require
+
 vim.g.vim_distro = "despair.nvim"
 vim.g.mapleader = ";"
 
