@@ -1,15 +1,14 @@
-local load = require("module").load
-
-_G.import = require
+require('setglobals')
 
 vim.g.vim_distro = "despair.nvim"
 vim.g.mapleader = ";"
+vim.g.maplocalleader = ","
 
-load('options')
-load('filetypes')
-load('keymap')
-load('autocmd')
-load('commands')
+include 'options'
+include 'filetypes'
+include 'keymap'
+include 'autocmd'
+include 'commands'
 
-vim.cmd.colorscheme("gruvbox")
+require("colorscheme").source()
 
