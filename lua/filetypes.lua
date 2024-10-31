@@ -9,41 +9,19 @@ local function list_dir(dir)
     return vim.split(vim.fn.glob(dir .. "/*"), '\n', { trimempty = true })
 end
 
--- for _, path in ipairs(runtimepaths) do
---     local files = list_dir(path .. "/syntax/zdoomlumps")
---     for _, file in ipairs(files) do
---         file = vim.fn.fnamemodify(file, ":t")
---         if file ~= "template-file.vim" then
---             local name = file:replace(".vim", "")
---             local lname = name:lower()
---             local cname = name:upper()
---             zdoomlumps[lname .. ".txt"] = "zdoomlump"
---             zdoomlumps[cname] = "zdoomlump"
---         end
---     end
--- end
-
-vim.filetype.add({
-    extension = {
-        hx = 'haxe',
-        sdl = 'jsl',
-        jsl = 'jsl',
-        bf = 'brainfucs',
-        jpp = 'jspp',
-        jspp = 'jspp',
-        c3 = 'c3',
-        vs = 'glsl',
-        fs = 'glsl',
-        fu = 'fusion',
-        snippet = 'snippets',
-        snippets = 'snippets',
-        vx = 'vox',
-        zs = "zscript",
-        zsc = "zscript",
-        lmp = "zdoomlump"
-    },
-    filename = zdoomlumps
-})
+for _, path in ipairs(runtimepaths) do
+    local files = list_dir(path .. "/syntax/zdoomlumps")
+    for _, file in ipairs(files) do
+        file = vim.fn.fnamemodify(file, ":t")
+        if file ~= "template-file.vim" then
+            local name = file:replace(".vim", "")
+            local lname = name:lower()
+            local cname = name:upper()
+            zdoomlumps[lname .. ".txt"] = "zdoomlump"
+            zdoomlumps[cname] = "zdoomlump"
+        end
+    end
+end
 
 local function setft(ftype)
     vim.bo.filetype = ftype

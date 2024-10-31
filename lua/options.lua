@@ -19,6 +19,7 @@ vim.o.mousemodel            = "extend" -- sets right mouse click to extend selec
 vim.o.signcolumn            = "no" -- removes gutter
 vim.o.virtualedit           = "onemore" -- allow to go a single char after eol
 vim.o.linebreak             = true -- wraps lines by words (softbreak)
+vim.o.cursorlineopt         = "screenline"
 
 vim.opt.autoread            = true   -- default value, autoreload file
 vim.opt.colorcolumn         = '0'    -- 80 symbol split

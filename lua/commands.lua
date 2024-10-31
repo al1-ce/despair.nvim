@@ -16,4 +16,16 @@ vim.api.nvim_create_user_command('Wrap', function()
         vim.notify("Turning wrap off")
     end
 end, {})
+-- vim.api.nvim_create_user_command('FixColors', function() dofile(vim.fn.stdpath('config') .. "/lua/config/theme.lua") end, {})
+
+vim.api.nvim_create_user_command("OpenWith", function (opts)
+    local args = opts.fargs
+    table.insert(args, vim.fn.expand("%:p"))
+    vim.system(args)
+end, { range = false, nargs = "+" })
+
+vim.api.nvim_create_user_command("SetColorscheme", function (opts)
+    local args = opts.fargs
+    require("colorscheme").set(args)
+end, { range = false, nargs = 1 })
 
