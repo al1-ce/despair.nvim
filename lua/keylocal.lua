@@ -118,3 +118,7 @@ noremap("n", "<leader>br", function() vim.cmd("!just run") end)
 noremap("n", "<leader>bR", function() vim.cmd("!just release") end)
 noremap("n", "<leader>bf", function() vim.cmd("!just file " .. vim.fn.expand("%:p")) end)
 noremap("n", "<leader>bt", function() vim.cmd("!just tags") end)
+
+noremap("n", "ys", [["v" . input("Where: ") . "\"sc" . input("Add what: ") . "<c-o>h<c-r>s<esc>"]], { expr=true })
+noremap("n", "cs", [["vi" . input("Change what: ") . "\"sc<c-o>l<c-h><c-h>" . input("To what: ") . "<c-o>h<c-r>s<esc>"]], { expr=true })
+
