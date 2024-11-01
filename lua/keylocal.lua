@@ -122,3 +122,63 @@ noremap("n", "<leader>bt", function() vim.cmd("!just tags") end)
 noremap("n", "ys", [["v" . input("Where: ") . "\"sc" . input("Add what: ") . "<c-o>h<c-r>s<esc>"]], { expr=true })
 noremap("n", "cs", [["vi" . input("Change what: ") . "\"sc<c-o>l<c-h><c-h>" . input("To what: ") . "<c-o>h<c-r>s<esc>"]], { expr=true })
 
+__switch_c_hc = function(split_type)
+    local flipname
+    if vim.fn.match(vim.fn.expand("%"), "\\.c") > 0 then
+        flipname = vim.fn.substitute(vim.fn.expand("%:t"), "\\.c\\(.*\\)", ".h\\1", "")
+    elseif vim.fn.match(vim.fn.expand("%"), "\\.h") > 0 then
+        flipname = vim.fn.substitute(vim.fn.expand("%:t"), "\\.h\\(.*\\)", ".c\\1", "")
+    else return end
+    local ok, err = pcall(vim.cmd, "find " .. flipname)
+    if not ok then
+        vim.notify("Failed to find '" .. flipname .. "' in path.", vim.log.levels.ERROR)
+    end
+    if split_type ~= "none" then vim.cmd(split_type .. " | wincmd p | edit # | wincmd p") end
+end
+
+-- vim.cmd([[
+--     function! Switch_To_Header_Source()
+--         if match(expand("%"),'\.c') > 0
+--             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
+--             echo s:flipname
+--             exe ":find " s:flipname
+--         elseif match(expand("%"),"\\.h") > 0
+--             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
+--             exe ":find " s:flipname
+--         endif
+--     endfun
+--     function! Switch_To_Header_Source_SP()
+--         if match(expand("%"),'\.c') > 0
+--             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
+--             exe ":find " s:flipname
+--             split
+--             wincmd p
+--             edit #
+--             wincmd p
+--         elseif match(expand("%"),"\\.h") > 0
+--             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
+--             exe ":find " s:flipname
+--             split
+--             wincmd p
+--             edit #
+--             wincmd p
+--         endif
+--     endfun
+--     function! Switch_To_Header_Source_VSP()
+--         if match(expand("%"),'\.c') > 0
+--             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
+--             exe ":find " s:flipname
+--             vsplit
+--             wincmd p
+--             edit #
+--             wincmd p
+--         elseif match(expand("%"),"\\.h") > 0
+--             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
+--             exe ":find " s:flipname
+--             vsplit
+--             wincmd p
+--             edit #
+--             wincmd p
+--         endif
+--     endfun
+-- ]])
