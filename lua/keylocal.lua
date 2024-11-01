@@ -1,3 +1,4 @@
+---@diagnostic disable: lowercase-global
 -- All primary keymaps. Some plugin-related or screen-local might be in other files
 local noremap = require("map").noremap
 
@@ -135,50 +136,13 @@ __switch_c_hc = function(split_type)
     end
     if split_type ~= "none" then vim.cmd(split_type .. " | wincmd p | edit # | wincmd p") end
 end
+noremap("i", "<A-k>", "<esc>ddkPi", { desc = "Moves line up" })
+noremap("i", "<A-j>", "<esc>ddpi", { desc = "Moves line down" })
+noremap("i", "<A-up>", "<esc>ddkPi", { desc = "Moves line up" })
+noremap("i", "<A-down>", "<esc>ddpi", { desc = "Moves line down" })
 
--- vim.cmd([[
---     function! Switch_To_Header_Source()
---         if match(expand("%"),'\.c') > 0
---             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
---             echo s:flipname
---             exe ":find " s:flipname
---         elseif match(expand("%"),"\\.h") > 0
---             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
---             exe ":find " s:flipname
---         endif
---     endfun
---     function! Switch_To_Header_Source_SP()
---         if match(expand("%"),'\.c') > 0
---             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
---             exe ":find " s:flipname
---             split
---             wincmd p
---             edit #
---             wincmd p
---         elseif match(expand("%"),"\\.h") > 0
---             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
---             exe ":find " s:flipname
---             split
---             wincmd p
---             edit #
---             wincmd p
---         endif
---     endfun
---     function! Switch_To_Header_Source_VSP()
---         if match(expand("%"),'\.c') > 0
---             let s:flipname = substitute(expand("%:t"),'\.c\(.*\)','.h\1',"")
---             exe ":find " s:flipname
---             vsplit
---             wincmd p
---             edit #
---             wincmd p
---         elseif match(expand("%"),"\\.h") > 0
---             let s:flipname = substitute(expand("%:t"),'\.h\(.*\)','.c\1',"")
---             exe ":find " s:flipname
---             vsplit
---             wincmd p
---             edit #
---             wincmd p
---         endif
---     endfun
--- ]])
+noremap("v", "<A-j>", [['xp`[' . getregtype()[0] . '`]']], { desc = "moves visual lines down", expr = true })
+noremap("v", "<A-up>", [['xkP`[' . getregtype()[0] . '`]']], { desc = "moves visual lines up", expr = true })
+noremap("v", "<A-down>", [['xp`[' . getregtype()[0] . '`]']], { desc = "moves visual lines down", expr = true })
+noremap("v", "<A-k>", [['xkP`[' . getregtype()[0] . '`]']], { desc = "moves visual lines up", expr = true })
+
