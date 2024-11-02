@@ -10,9 +10,10 @@ include 'keymap'
 include 'autocmd'
 include 'commands'
 
-local st = require("statusline")
 local cs = require("colorscheme")
+local st = require("statusline")
+
+cs.source()
 cs.on_reload(st.gen_hl_groups)
 st.start_stline()
-cs.source()
 

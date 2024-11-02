@@ -1,0 +1,97 @@
+- [!] - comment-box.nvim - boxes cli, see notes !!!!!!
+- [!] - sessions.nvim - :mksession and :source !!!!!!
+- [!] - vim-lion - :normal f=50i 20|dw ( - C-w ESC, 20 - column to align to) !!!!!!!
+- [!] - winshift.nvim - see notes !!!!!!
+- [?] - cmp-snippy - -1read %file" ????????
+- [?] - nvim-snippy - see cmp-snippy ???????
+- [?] - todo-comments.nvim - only qf part needed ????????
+- [?] - vim-snippets - see cmp-snippy ????
+- [X] - QFEnter - gf or C-]
+- [X] - cmp-buffer - omnifunc
+- [X] - cmp-cmdline - omnifunc
+- [X] - cmp-nvim-lsp - omnifunc
+- [_] - Comment.nvim - not planned/needed
+- [_] - boole.nvim - not planned/needed
+- [_] - ccc.nvim - not planned/needed
+- [_] - colorful-winsep.nvim - not planned[needed]
+- [_] - csvview.nvim - not planned[needed]
+- [_] - dart-vim-plugin - not planned[needed]
+- [_] - dressing.nvim - not planned[needed]
+- [_] - fidget.nvim - not planned[needed]
+- [_] - garbage-day.nvim - not planned[needed]
+- [_] - git-conflict.nvim - not planned[needed]
+- [_] - hbac.nvim - not planned[needed]
+- [_] - jsfunc.nvim - not planned[needed]
+- [_] - lazy.nvim - not planned[needed]
+- [_] - lazydev.nvim - not planned[needed]
+- [_] - leap.nvim - not planned[needed]
+- [_] - lspkind.nvim - not planned[needed]
+- [_] - lspsaga.nvim - not planned[needed]
+- [_] - mason-lspconfig.nvim - not planned[needed]
+- [_] - mason.nvim - not planned[needed]
+- [_] - nlsp-settings.nvim - not planned[needed]
+- [_] - nvim-lspconfig - not planned[needed]
+- [_] - nvim-notify - not planned[needed]
+- [_] - nvim-pqf - not planned[needed]
+- [_] - nvim-recorder - not planned[needed]
+- [_] - nvim-treesitter - not planned[needed]
+- [_] - nvim-web-devicons - not planned[needed]
+- [_] - octohub.nvim - not planned[needed]
+- [_] - plenary.nvim - not planned[needed]
+- [_] - plugin-readme.nvim - not planned[needed]
+- [_] - project.nvim - not planned[needed]
+- [_] - rasi.vim - not planned[needed]
+- [_] - tabby.nvim - not planned[needed]
+- [_] - table-nvim - not planned[needed]
+- [_] - telescope.nvim - not planned[needed]
+- [_] - tiny-devicons-auto-colors.nvim - not planned[needed]
+- [_] - tree-sitter-just - not planned[needed]
+- [_] - troublesum.nvim - not planned[needed]
+- [_] - utils.nvim - not planned[needed]
+- [_] - wezterm-types - not planned[needed]
+- [_] - xmake-luals-add - not planned[needed]
+- [x] - fzf-lua - rg + quickfix
+- [x] - grug-far.nvim - rg
+- [x] - jsl.vim - copy if syntax file
+- [x] - just.nvim - mappings to ! commands
+- [x] - lualine-so-fancy.nvim - see lualine
+- [x] - lualine.nvim - custom simple statusline
+- [x] - move.nvim - ">just use tabs!"
+- [x] - myJABS.nvim - ls + input
+- [x] - nvim-cmp - vim completion + omnifunc
+- [x] - nvim-lastplace - autocmd '.
+- [x] - nvim-rip-substitute - rg + input
+- [x] - nvim-surround - simple custom mappings
+- [x] - oil.nvim - netrw, surprisingly good
+- [x] - ouroboros - custom function with :find
+- [x] - smart-splits.nvim - mappings
+- [x] - tui.nvim - term://%command%
+- [x] - vim-autoread - autocmd + vim option
+- [x] - vim-better-whitespace - simple autocmd
+- [x] - vim-glsl - syntax file copy
+
+NOTES:
+
+Boxes command:
+
+:-1r!echo "your text" | boxes -d lua-box -s 80 -a "hcvc"
+
+" Rotate a window horizontally to the left
+function! RotateLeft()
+    let l:curbuf = bufnr('%')
+    hide
+    wincmd h
+    split
+    exe 'buf' l:curbuf
+endfunc
+
+" Rotate a window horizontally to the right
+function! RotateRight()
+    let l:curbuf = bufnr('%')
+    hide
+    wincmd l
+    split
+    exe 'buf' l:curbuf
+endfunc
+
+
