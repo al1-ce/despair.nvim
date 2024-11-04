@@ -1,11 +1,5 @@
 local noremap = require("lib.map").noremap
-local keyfunc
-if vim.g.vim_distro == "monolith.nvim" then
-    keyfunc = require("config.keyfunc")
-    require("config.keylocal")
-else
-    keyfunc = require("lib.kfn")
-end
+local keyfunc = require("lib.kfn")
 
 -- - ---------------------------------------------------------------------------- -
 -- -                       Window navigation and management                       -

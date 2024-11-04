@@ -11,13 +11,25 @@ local gen_hl_groups = function()
         back    = hl('Normal').bg     or "#fe0000"
     }
 
-    vim.api.nvim_set_hl(0, "DesStatusNormal",     { bg = colors.back, fg = colors.fore })
-    vim.api.nvim_set_hl(0, "DesStatusNormalBold", { bg = colors.back, fg = colors.fore, bold = true })
-    vim.api.nvim_set_hl(0, "DesStatusInsert",     { bg = colors.insert, fg = colors.fore, bold = true })
-    vim.api.nvim_set_hl(0, "DesStatusReplace",    { fg = colors.replace, bold = true, reverse = true })
-    vim.api.nvim_set_hl(0, "DesStatusVisual",     { fg = colors.visual, bold = true, reverse = true  })
-    vim.api.nvim_set_hl(0, "DesStatusCommand",    { fg = colors.command, bold = true, reverse = true  })
-    vim.api.nvim_set_hl(0, "DesStatusRedFg",      { fg = colors.replace })
+    local function get_hl_table(fg, bg, opts)
+        local r = opts or {}
+        if vim.g.is_tty then
+            if fg ~= nil then r.ctermfg = tonumber(fg) end
+            if bg ~= nil then r.ctermbg = tonumber(bg) end
+        else
+            if fg ~= nil then r.fg = fg end
+            if bg ~= nil then r.bg = bg end
+        end
+        return r
+    end
+
+    vim.api.nvim_set_hl(0, "DesStatusNormal",     get_hl_table(colors.fore, colors.back))
+    vim.api.nvim_set_hl(0, "DesStatusNormalBold", get_hl_table(colors.fore, colors.back,   { bold = true } ))
+    vim.api.nvim_set_hl(0, "DesStatusInsert",     get_hl_table(colors.fore, colors.insert, { bold = true } ))
+    vim.api.nvim_set_hl(0, "DesStatusReplace",    get_hl_table(colors.replace, nil, { bold = true, reverse = true } ))
+    vim.api.nvim_set_hl(0, "DesStatusVisual",     get_hl_table(colors.visual , nil, { bold = true, reverse = true } ))
+    vim.api.nvim_set_hl(0, "DesStatusCommand",    get_hl_table(colors.command, nil, { bold = true, reverse = true } ))
+    vim.api.nvim_set_hl(0, "DesStatusRedFg",      get_hl_table(colors.replace, nil))
 
 end
 
