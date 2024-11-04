@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 
 noremap("n", "<leader>bd", function() vim.cmd("!just default") end)
 noremap("n", "<leader>bD", function() vim.cmd("!just debug") end)

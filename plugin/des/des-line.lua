@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 
 noremap("i", "<A-k>", "<esc>ddkPi", { desc = "Moves line up" })
 noremap("i", "<A-j>", "<esc>ddpi", { desc = "Moves line down" })

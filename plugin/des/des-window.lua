@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 
 -- TODO: make proper resize (using winshift funcs)
 noremap("n", "<A-C-h>",     "<C-w><", { desc = "Decrease split width" })

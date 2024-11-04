@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 
 -- neovim being beatcsh
 -- can't just <esc>xx|dw

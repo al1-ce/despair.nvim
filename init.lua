@@ -1,11 +1,11 @@
-require('setglobals')
+require("lib.glb")
 
 vim.g.vim_distro = "despair.nvim"
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ","
 
-include 'options'
-include 'keymap'
+include "opt/opt"
+include "opt/key"
 
-require("colorscheme").source()
+include "lib/col"
 

@@ -1,5 +1,5 @@
-local hl = require('hlgroups')
-local ti = require('timer')
+local hl = require("lib.hlg")
+local ti = require("lib.tim")
 
 local gen_hl_groups = function()
     local colors = {
@@ -96,7 +96,7 @@ local start_stline = function()
 end
 
 if despair_statusline_reload_interval == nil then
-    local cs = require("colorscheme")
+    local cs = require("lib.col")
     cs.on_reload(gen_hl_groups)
     start_stline()
 

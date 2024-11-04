@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 
 noremap("n", "<leader>j", function()
     local buffers = vim.api.nvim_exec2("ls", { output = true} )

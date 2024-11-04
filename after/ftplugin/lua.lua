@@ -1,5 +1,5 @@
-local bufnoremap = require("map").bufnoremap
-local remap      = require("map").remap
+local bufnoremap = require("lib.map").bufnoremap
+local remap      = require("lib.map").remap
 
 bufnoremap("n", "<leader>xf", "<cmd>w<cr><cmd>source %<cr>", { desc = "E[X]ecute [F]ile" })
 bufnoremap("n", "<leader>xc", "V:lua<cr>", { desc = "E[X]ecute Lua" })

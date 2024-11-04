@@ -1,4 +1,4 @@
-local noremap = require("map").noremap
+local noremap = require("lib.map").noremap
 local function error(msg) vim.notify(msg, vim.log.levels.error) end
 
 local function fill_qf(lines, title, funcmod)

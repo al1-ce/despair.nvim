@@ -2,6 +2,8 @@
 ---@diagnostic disable: param-type-mismatch
 local M = { on_reload_listeners = {} }
 
+local is_setup = false
+
 M.on_reload = function(func) table.insert(M.on_reload_listeners, func) end
 
 M.source = function()
@@ -32,6 +34,8 @@ M.set = function(name)
         end)
     end)
 end
+
+if not is_setup then M.source(); is_setup = true end
 
 return M
 
