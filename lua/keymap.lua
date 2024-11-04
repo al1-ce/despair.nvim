@@ -8,9 +8,9 @@ else
     require("keylocal")
 end
 
--- - ----------------------------------------------------------------------------- -
--- -                       Window navigation and management                        -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                       Window navigation and management                       -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<A-h>",     "<C-w>h", { desc = "Focuses pane to the left" })
 noremap("n", "<A-l>",     "<C-w>l", { desc = "Focuses pane to the right" })
@@ -21,41 +21,23 @@ noremap("n", "<A-right>", "<C-w>l", { desc = "Focuses pane to the right" })
 noremap("n", "<A-up>",    "<C-w>k", { desc = "Focuses upper pane" })
 noremap("n", "<A-down>",  "<C-w>j", { desc = "Focuses lower pane" })
 
-noremap("n", "<A-C-h>",     "<C-w><", { desc = "Focuses pane to the left" })
-noremap("n", "<A-C-l>",     "<C-w>>", { desc = "Focuses pane to the right" })
-noremap("n", "<A-C-k>",     "<C-w>-", { desc = "Focuses upper pane" })
-noremap("n", "<A-C-j>",     "<C-w>+", { desc = "Focuses lower pane" })
-noremap("n", "<A-C-left>",  "<C-w><", { desc = "Focuses pane to the left" })
-noremap("n", "<A-C-right>", "<C-w>>", { desc = "Focuses pane to the right" })
-noremap("n", "<A-C-up>",    "<C-w>-", { desc = "Focuses upper pane" })
-noremap("n", "<A-C-down>",  "<C-w>+", { desc = "Focuses lower pane" })
-
-noremap("n", "<A-S-h>",     "<C-w>H", { desc = "Focuses pane to the left" })
-noremap("n", "<A-S-l>",     "<C-w>L", { desc = "Focuses pane to the right" })
-noremap("n", "<A-S-k>",     "<C-w>K", { desc = "Focuses upper pane" })
-noremap("n", "<A-S-j>",     "<C-w>J", { desc = "Focuses lower pane" })
-noremap("n", "<A-S-left>",  "<C-w>H", { desc = "Focuses pane to the left" })
-noremap("n", "<A-S-right>", "<C-w>L", { desc = "Focuses pane to the right" })
-noremap("n", "<A-S-up>",    "<C-w>K", { desc = "Focuses upper pane" })
-noremap("n", "<A-S-down>",  "<C-w>J", { desc = "Focuses lower pane" })
-
 noremap("n", "<leader>ss", "<CMD>split<CR>", { desc = "[S]plit [S]horisontaly" })
 noremap("n", "<leader>sv", "<CMD>vsplit<CR>", { desc = "[S]plit [V]ertically" })
 
 noremap("n", "<leader>gg", "<CMD>tab sp<CR>", { desc = "Opens current buffer in new tab" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                    Scroll                                     -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                    Scroll                                    -
+-- - ---------------------------------------------------------------------------- -
 
 noremap('' , '<S-ScrollWheelUp>',   '3zh', { desc = "Scrolls right" })
 noremap('' , '<S-ScrollWheelDown>', '3zl', { desc = "Scrolls left" })
 noremap('i', '<S-ScrollWheelUp>',   '<C-o>3zh', { desc = "Scrolls right" })
 noremap('i', '<S-ScrollWheelDown>', '<C-o>3zl', { desc = "Scrolls left" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                     Misc                                      -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                     Misc                                     -
+-- - ---------------------------------------------------------------------------- -
 
 noremap('i', '<Esc>', '<Esc>l', { desc = "Makes insert exit at correct spot" });
 noremap("n", "<C-i>", "<C-i>",  { desc = "Jump motion fix" })
@@ -63,9 +45,9 @@ noremap("n", "U", "V:s/\\s\\+/\\r/g<cr>", { desc = "Unjoin lines (don't need rea
 noremap("n", "<leader>tv", "<cmd>vsp term://$SHELL<cr>", { desc = "[T]erminal [V]split" })
 noremap("n", "<leader>ts", "<cmd>sp term://$SHELL<cr>",  { desc = "[T]erminal [S]plit" })
 
--- - ----------------------------------------------------------------------------- -
--- -                               Buffer navigation                               -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                              Buffer navigation                               -
+-- - ---------------------------------------------------------------------------- -
 
 noremap('n', "<Home>", keyfunc.lineHome, { desc = "Goes to beginning of line" })
 noremap('i', "<Home>", keyfunc.lineHome, { desc = "Goes to beginning of line" })
@@ -77,9 +59,9 @@ noremap('v', "<End>",  keyfunc.lineEnd,  { desc = "Goes to end of line" })
 noremap("n", "n", "nzzzv", { desc = "Keep search centered" })
 noremap("n", "N", "Nzzzv", { desc = "Keep search centered" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                 Text editing                                  -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Text editing                                 -
+-- - ---------------------------------------------------------------------------- -
 
 -- noremap("n", "<Tab>",   ">>", { desc = "Shifts line to right" })
 -- noremap("n", "<S-Tab>", "<<", { desc = "Shifts line to left" })
@@ -114,25 +96,27 @@ noremap("i", "<BS>",  function() keyfunc.delete_char(1) end, { desc = "Deletes i
 noremap("v", "<BS>",  '"_x', { desc = "Deletes into black hole" });
 noremap("v", "<Del>", '"_x', { desc = "Deletes into black hole" });
 
--- - ----------------------------------------------------------------------------- -
--- -                               Buffer management                               -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                              Buffer management                               -
+-- - ---------------------------------------------------------------------------- -
 
-noremap("n", "<leader>fs", "<C-^>",          { desc = "[F]ile [S]wap" })
+noremap("n", "<leader>fs", "<cmd>exe v:count ? v:count .. 'b' : 'b' .. (bufloaded(0) ? '#' : 'n')<cr>", { desc = "[F]ile [S]wap" })
+
 noremap("n", "<leader>fe", "<cmd>enew<cr>",  { desc = "[F]ile [E]dit" })
 noremap("n", "<leader>q", "<CMD>x<CR>",      { desc = "[Q]uits buffer" })
 noremap("n", "<leader>w", "<CMD>update<CR>", { desc = "[W]rites buffer" })
 
--- - ----------------------------------------------------------------------------- -
--- -                               Quick navigation                                -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                               Quick navigation                               -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<leader>cd", keyfunc.cd_filedir, { desc = "[C]hanges [D]irectory to current file" })
 noremap("n", "<leader>ce", "<cmd>edit $MYVIMRC <bar> tcd %:h<cr>", { desc = "[C]onfig [E]dit" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                  Programming                                  -
--- - ----------------------------------------------------------------------------- -
+
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Programming                                  -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<leader>co", "<cmd>copen<cr>", { desc = "[C][O]pen" })
 noremap("n", "]c", "<cmd>cnext<cr>",         { desc = "Go next quickfix" })
@@ -152,16 +136,22 @@ noremap("n", "]B", "<cmd>blast<cr>",         { desc = "Go to first buffer" })
 noremap("n", "[B", "<cmd>bfirst<cr>",        { desc = "Go to last buffer" })
 -- noremap("n", "<leader>bc", "<cmd>bdelete<cr>", { desc = "Close current buffer" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                   Remapping                                   -
--- - ----------------------------------------------------------------------------- -
+noremap("n", "<leader>cr", keyfunc.uncomment_line, { desc = "Remove comment line" })
+noremap("v", "<leader>cr", keyfunc.uncomment_box,  { desc = "Remove comment box" })
+noremap("n", "<leader>cl", keyfunc.comment_sep,    { desc = "Create comment separator" })
+noremap("n", "<leader>cb", keyfunc.comment_line,   { desc = "Create comment line" })
+noremap("v", "<leader>cb", keyfunc.comment_box,    { desc = "Create comment box" })
+
+-- - ---------------------------------------------------------------------------- -
+-- -                                  Remapping                                   -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "gx", keyfunc.open_link_norm, { desc = "[G]oes into link with [X]DG-OPEN" })
 noremap("v", "gx", keyfunc.open_link_vis,  { desc = "[G]oes into link with [X]DG-OPEN" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                  Empty" maps                                  -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Empty maps                                   -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("i", "<S-up>",    "<C-o>v<up>",    { desc = "Selects text in visual mode" })
 noremap("i", "<S-down>",  "<C-o>v<down>",  { desc = "Selects text in visual mode" })
@@ -176,30 +166,30 @@ noremap("i", "<C-S-right>", "<C-o>v<C-right>", { desc = "Selects text in visual 
 noremap("v", "<S-down>", "<down>", { desc = "Prevent buffer scroll" })
 noremap("v", "<S-up>",   "<up>",   { desc = "Prevent buffer scroll" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                 Quick config                                  -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Quick config                                 -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<leader>ow", "<cmd>Wrap<cr>",  { desc = "Toggle [O]ption - [W]rap" })
 noremap("n", "<leader>os", "<cmd>Spell<cr>", { desc = "Toggle [O]ption - [S]pell" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                   Terminal                                    -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                   Terminal                                   -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("t", "<Esc>", [[<c-\><c-n>]], { desc = "Exits terminal insert mode" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                Code execution                                 -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                Code execution                                -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<leader>xb", "yy2o<ESC>kpV:!/bin/bash<CR>", { desc = "[E]xecute [B]ash and paste" })
 noremap("v", "<leader>xb", "y'<P'<O<ESC>'>o<ESC>:<C-u>'<,'>!/bin/bash<CR>", { desc = "[E]xecute [B]ash and paste" })
 noremap("n", "<leader>xsl", "<cmd>vsplit /tmp/nvim-scratchpad.lua<cr><cmd>w<cr>", { desc = "E[x]ecute [S]cratch [L]ua" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                  Textobjects                                  -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Textobjects                                  -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("x", "il", "g_o^", { desc = "[I]n [L]ine text object" })
 noremap("x", "al", "$o^",  { desc = "[A]round [L]ine text object" })
@@ -211,9 +201,9 @@ noremap("o", "g_", ":norm vg_h<cr>", { desc = "To last char in line text object"
 noremap("o", "^",  ":norm v^<cr>",   { desc = "To first char in line text object" })
 noremap("o", "0",  ":norm v0<cr>",   { desc = "To start of line text object" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                 Diff editing                                  -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                 Diff editing                                 -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<leader>df", "/=======<cr><cmd>nohl<cr>zz", { desc = "[D]iff [F]ind" })
 noremap("n", "<leader>dF", "?=======<cr><cmd>nohl<cr>zz", { desc = "[D]iff [F]ind backwards" })
@@ -221,9 +211,9 @@ noremap("n", "<leader>di", "mf/>>>>>>> <cr>mt?<<<<<<< <cr>mk'fV'tx'kdd<cmd>nohl<
 noremap("n", "<leader>do", "mf?<<<<<<< <cr>mt/>>>>>>> <cr>mk'fV'tx'kdd<cmd>nohl<cr>", { desc = "[D]iff [O]utgoing" })
 noremap("n", "<leader>db", "dd?<<<<<<< <cr>dd/>>>>>>> <cr>dd<cmd>nohl<cr>", { desc = "[D]iff [K]eep both" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                Tab navigation                                 -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                Tab navigation                                -
+-- - ---------------------------------------------------------------------------- -
 
 noremap("n", "<A-.>", "<cmd>tabnext<cr>",     { desc = "Opens next tab" })
 noremap("n", "<A-,>", "<cmd>tabprevious<cr>", { desc = "Opens previous tab" })
@@ -246,9 +236,9 @@ noremap("n", "<leader>t8", "8gt", { desc = "Go to [t]ab [8]" })
 noremap("n", "<leader>t9", "9gt", { desc = "Go to [t]ab [9]" })
 noremap("n", "<leader>t0", "<cmd>tablast<cr>", { desc = "Go to last tab" })
 
--- - ----------------------------------------------------------------------------- -
--- -                                Tips and notes                                 -
--- - ----------------------------------------------------------------------------- -
+-- - ---------------------------------------------------------------------------- -
+-- -                                Tips and notes                                -
+-- - ---------------------------------------------------------------------------- -
 
 -- tip: o switches vis direction
 

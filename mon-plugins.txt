@@ -1,74 +1,74 @@
-- [!] - comment-box.nvim - boxes cli, see notes !!!!!!
+- [!] - cmp-snippy - -1read %file" !!!!!!!!
 - [!] - sessions.nvim - :mksession and :source !!!!!!
-- [!] - vim-lion - :normal f=50i 20|dw ( - C-w ESC, 20 - column to align to) !!!!!!!
-- [!] - winshift.nvim - see notes !!!!!!
-- [?] - cmp-snippy - -1read %file" ????????
+- [x] - winshift.nvim - see notes !!!!!!
 - [?] - nvim-snippy - see cmp-snippy ???????
-- [?] - todo-comments.nvim - only qf part needed ????????
 - [?] - vim-snippets - see cmp-snippy ????
-- [X] - QFEnter - gf or C-]
-- [X] - cmp-buffer - omnifunc
-- [X] - cmp-cmdline - omnifunc
-- [X] - cmp-nvim-lsp - omnifunc
-- [_] - Comment.nvim - not planned/needed
-- [_] - boole.nvim - not planned/needed
-- [_] - ccc.nvim - not planned/needed
-- [_] - colorful-winsep.nvim - not planned[needed]
-- [_] - csvview.nvim - not planned[needed]
-- [_] - dart-vim-plugin - not planned[needed]
-- [_] - dressing.nvim - not planned[needed]
-- [_] - fidget.nvim - not planned[needed]
-- [_] - garbage-day.nvim - not planned[needed]
-- [_] - git-conflict.nvim - not planned[needed]
-- [_] - hbac.nvim - not planned[needed]
-- [_] - jsfunc.nvim - not planned[needed]
-- [_] - lazy.nvim - not planned[needed]
-- [_] - lazydev.nvim - not planned[needed]
-- [_] - leap.nvim - not planned[needed]
-- [_] - lspkind.nvim - not planned[needed]
-- [_] - lspsaga.nvim - not planned[needed]
-- [_] - mason-lspconfig.nvim - not planned[needed]
-- [_] - mason.nvim - not planned[needed]
-- [_] - nlsp-settings.nvim - not planned[needed]
-- [_] - nvim-lspconfig - not planned[needed]
-- [_] - nvim-notify - not planned[needed]
-- [_] - nvim-pqf - not planned[needed]
-- [_] - nvim-recorder - not planned[needed]
-- [_] - nvim-treesitter - not planned[needed]
-- [_] - nvim-web-devicons - not planned[needed]
-- [_] - octohub.nvim - not planned[needed]
-- [_] - plenary.nvim - not planned[needed]
-- [_] - plugin-readme.nvim - not planned[needed]
-- [_] - project.nvim - not planned[needed]
-- [_] - rasi.vim - not planned[needed]
-- [_] - tabby.nvim - not planned[needed]
-- [_] - table-nvim - not planned[needed]
-- [_] - telescope.nvim - not planned[needed]
-- [_] - tiny-devicons-auto-colors.nvim - not planned[needed]
-- [_] - tree-sitter-just - not planned[needed]
-- [_] - troublesum.nvim - not planned[needed]
-- [_] - utils.nvim - not planned[needed]
-- [_] - wezterm-types - not planned[needed]
-- [_] - xmake-luals-add - not planned[needed]
-- [x] - fzf-lua - rg + quickfix
-- [x] - grug-far.nvim - rg
-- [x] - jsl.vim - copy if syntax file
-- [x] - just.nvim - mappings to ! commands
-- [x] - lualine-so-fancy.nvim - see lualine
-- [x] - lualine.nvim - custom simple statusline
-- [x] - move.nvim - ">just use tabs!"
-- [x] - myJABS.nvim - ls + input
-- [x] - nvim-cmp - vim completion + omnifunc
-- [x] - nvim-lastplace - autocmd '.
-- [x] - nvim-rip-substitute - rg + input
-- [x] - nvim-surround - simple custom mappings
-- [x] - oil.nvim - netrw, surprisingly good
-- [x] - ouroboros - custom function with :find
-- [x] - smart-splits.nvim - mappings
-- [x] - tui.nvim - term://%command%
-- [x] - vim-autoread - autocmd + vim option
-- [x] - vim-better-whitespace - simple autocmd
-- [x] - vim-glsl - syntax file copy
+- [_] - (???)                          git-conflict.nvim              - not planned[needed]
+- [_] - (align md tables)              table-nvim                     - not planned[needed]
+- [_] - (autoclose buffers)            hbac.nvim                      - not planned[needed]
+- [_] - (autoclose lsp)                garbage-day.nvim               - not planned[needed]
+- [_] - (better native gcc gc* motion) Comment.nvim                   - not planned/needed]
+- [_] - (better quickfix)              nvim-pqf                       - not planned[needed]
+- [_] - (color picker)                 ccc.nvim                       - not planned/needed]
+- [_] - (easier macros)                nvim-recorder                  - not planned[needed]
+- [_] - (gh clone/nav)                 octohub.nvim                   - not planned[needed]
+- [_] - (jump to two letters)          leap.nvim                      - not planned[needed]
+- [_] - (justfile parser)              tree-sitter-just               - not planned[needed]
+- [_] - (lib basically)                telescope.nvim                 - not planned[needed]
+- [_] - (lib)                          dressing.nvim                  - not planned[needed]
+- [_] - (lib)                          jsfunc.nvim                    - not planned[needed]
+- [_] - (lib)                          nvim-web-devicons              - not planned[needed]
+- [_] - (lib)                          plenary.nvim                   - not planned[needed]
+- [_] - (lib)                          utils.nvim                     - not planned[needed]
+- [_] - (notification)                 fidget.nvim                    - not planned[needed]
+- [_] - (notification)                 nvim-notify                    - not planned[needed]
+- [_] - (parser)                       nvim-treesitter                - not planned[needed]
+- [_] - (plugin manager)               lazy.nvim                      - not planned[needed]
+- [_] - (quick nav to project)         project.nvim                   - not planned[needed]
+- [_] - (syntax)                       dart-vim-plugin                - not planned[needed]
+- [_] - (syntax)                       rasi.vim                       - not planned[needed]
+- [_] - (tabline)                      tabby.nvim                     - not planned[needed]
+- [_] - (toggle words with C-a)        boole.nvim                     - not planned/needed]
+- [_] - (visual util)                  colorful-winsep.nvim           - not planned[needed]
+- [_] - (visual util)                  csvview.nvim                   - not planned[needed]
+- [_] - (visual util)                  tiny-devicons-auto-colors.nvim - not planned[needed]
+- [_] - (what is that plugin)          plugin-readme.nvim             - not planned[needed]
+- [_] - (why its still here)           xmake-luals-add                - not planned[needed]
+- [x] - (add "']}> around things)      nvim-surround                  - simple custom mappings
+- [x] - (align words)                  vim-lion                       - :normal f=50i 20|dw ( - C-v ESC, 20 - column to align to)
+- [x] - (autoreload buffer)            vim-autoread                   - autocmd + vim option
+- [x] - (better splits)                smart-splits.nvim              - mappings
+- [x] - (buffer nav)                   myJABS.nvim                    - ls + input
+- [x] - (file nav)                     oil.nvim                       - netrw, surprisingly good
+- [x] - (global regex replace)         grug-far.nvim                  - rg
+- [x] - (go to last edited pos)        nvim-lastplace                 - autocmd '.
+- [x] - (highlight whitespace)         vim-better-whitespace          - simple autocmd
+- [x] - (just executor)                just.nvim                      - mappings to ! commands
+- [x] - (local regex replace)          nvim-rip-substitute            - rg + input
+- [x] - (lsp)                          cmp-buffer                     - omnifunc
+- [x] - (lsp)                          cmp-cmdline                    - omnifunc
+- [x] - (lsp)                          cmp-nvim-lsp                   - omnifunc
+- [x] - (lsp)                          lazydev.nvim                   - omnifunc / ctags
+- [x] - (lsp)                          lspkind.nvim                   - omnifunc / ctags
+- [x] - (lsp)                          lspsaga.nvim                   - omnifunc / ctags
+- [x] - (lsp)                          mason-lspconfig.nvim           - omnifunc / ctags
+- [x] - (lsp)                          mason.nvim                     - omnifunc / ctags
+- [x] - (lsp)                          nlsp-settings.nvim             - omnifunc / ctags
+- [x] - (lsp)                          nvim-cmp                       - vim completion + omnifunc
+- [x] - (lsp)                          nvim-lspconfig                 - omnifunc / ctags
+- [x] - (lsp)                          troublesum.nvim                - omnifunc / ctags
+- [x] - (lsp)                          wezterm-types                  - omnifunc / ctags
+- [x] - (makes pretty comments)        comment-box.nvim               - remade with smol loc, dummy -> !!boxes cli, see notes !!!!!!
+- [x] - (move text around)             move.nvim                      - ">just use tabs!"
+- [x] - (open cli apps in float)       tui.nvim                       - term://%command%
+- [x] - (statusline)                   lualine-so-fancy.nvim          - see lualine
+- [x] - (statusline)                   lualine.nvim                   - custom simple statusline
+- [x] - (switch to header)             ouroboros                      - custom function with :find
+- [x] - (syntax)                       jsl.vim                        - copy if syntax file
+- [x] - (syntax)                       vim-glsl                       - syntax file copy
+- [x] - (tui fuzzy finder)             fzf-lua                        - rg + quickfix
+- [x] - (utils)                        QFEnter                        - gf or C-]
+- [x] - todo-comments.nvim - only qf part needed ????????
 
 NOTES:
 

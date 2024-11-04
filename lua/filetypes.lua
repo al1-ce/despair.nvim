@@ -38,6 +38,8 @@ local shebangList = {
 }
 
 local function setCustomHighlight(lang)
+    if vim.g.colors_name ~= 'despair' then return end
+
     vim.cmd([[syn match   dCustomFunc     "\zs\(\k\w*\)*\s*\ze("]])
 
     if lang == "d" then
@@ -56,7 +58,7 @@ local function detectShebangPattern()
            sb:find("^#!/usr/bin/env " .. k) ~= nil or
            sb:find("^#!/usr/bin/env %-S " .. k) ~= nil then
             setft(v)
-            setCustomHighlight(v)
+            if g.colors_name ~= 'despair' then setCustomHighlight(v) end
         end
     end
 end
@@ -104,7 +106,7 @@ do -- start autocmd block
     augroup("SetCustomFiletypes", { clear = true })
     augroup("ToggleCursorLine", { clear = true })
 
-    -- Templates
+        -- Templates
     -- D templates, template!val and template!(val)
     autocmd(event_filetype, { group = "SetCustomFiletypes", pattern = concat(bang_generics), callback = function() setCustomHighlight("d") end })
     -- C++ templates, template<val>, no need for custom
