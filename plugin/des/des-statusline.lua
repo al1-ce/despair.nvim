@@ -1,9 +1,7 @@
 local hl = require('hlgroups')
 local ti = require('timer')
 
-local M = {}
-
-M.gen_hl_groups = function()
+local gen_hl_groups = function()
     local colors = {
         replace = hl('Keyword').fg    or "#fe0000",
         insert  = hl('PmenuSbar').bg  or "#fe0000",
@@ -23,7 +21,7 @@ M.gen_hl_groups = function()
 
 end
 
-M.reset_stline = function()
+local reset_stline = function()
     if despair_statusline_reload_interval ~= nil then
         ti.clear_interval(despair_statusline_reload_interval)
         despair_statusline_reload_interval = nil
@@ -31,10 +29,10 @@ M.reset_stline = function()
     end
 end
 
-M.start_stline = function()
-    M.reset_stline()
+local start_stline = function()
+    reset_stline()
 
-    local interval_time = math.floor(250) 
+    local interval_time = math.floor(250)
 
     local draw_func = function()
         -- if vim.v.errmsg ~= "" then
@@ -92,9 +90,16 @@ M.start_stline = function()
     end
 
 
-    M.gen_hl_groups()
+    gen_hl_groups()
     draw_func()
     despair_statusline_reload_interval = ti.set_interval(interval_time, draw_func)
 end
 
-return M
+if despair_statusline_reload_interval == nil then
+    local cs = require("colorscheme")
+    cs.on_reload(gen_hl_groups)
+    start_stline()
+
+    vim.api.nvim_create_user_command("StatuslineReset", reset_stline, {})
+end
+

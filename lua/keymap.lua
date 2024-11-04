@@ -5,7 +5,6 @@ if vim.g.vim_distro == "monolith.nvim" then
     require("config.keylocal")
 else
     keyfunc = require("keyfunc")
-    require("keylocal")
 end
 
 -- - ---------------------------------------------------------------------------- -

@@ -13,7 +13,8 @@ augroup('FixColorScheme', { clear = true })
 autocmd("ColorScheme", {
     group = "FixColorScheme",
     callback = function ()
-    dofile(vim.fn.stdpath('config') .. "/lua/theme.lua")
+    -- dofile(vim.fn.stdpath('config') .. "/lua/theme.lua")
+    vim.cmd("SilColorschemeSet")
 end
 })
 
@@ -29,6 +30,7 @@ augroup END
 ]])
 
 if vim.g.vim_distro == "despair.nvim" then
+    -- reopen at last edited place
     vim.api.nvim_create_autocmd({ "BufReadPost" }, {
         pattern = { "*" },
         callback = function()
@@ -36,4 +38,5 @@ if vim.g.vim_distro == "despair.nvim" then
         end,
     })
 end
+
 

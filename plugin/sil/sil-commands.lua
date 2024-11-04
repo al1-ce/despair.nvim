@@ -1,4 +1,3 @@
-
 vim.api.nvim_create_user_command('Spell', function()
     vim.o.spell = not vim.o.spell
     if vim.o.spell then
@@ -28,4 +27,5 @@ vim.api.nvim_create_user_command("SetColorscheme", function (opts)
     local args = opts.fargs[1]
     require("colorscheme").set(args)
 end, { range = false, nargs = 1 })
+
 
