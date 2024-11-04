@@ -1,4 +1,12 @@
 local noremap = require("lib.map").noremap
+if vim.fn.executable("rg") ~= 1 or vim.g.use_search_find then
+    noremap("n", "<leader>ff", [["<cmd>silent sfind! " . input("What")]], { desc = "[F]ind [F]iles" })
+    noremap("n", "<leader>fg", [["<cmd>silent lgrep! " . input("What") . " | lopen"]], { desc = "[F]ile [G]rep", expr = true })
+    -- noremap("n", "<leader>fr", function() end, { desc = "[F]ind [R]ecent" })
+    -- noremap("n", "<leader>rg", function() end, { desc = "[R]ip[G]rep" })
+    -- noremap("n", "<leader>ft", function() end, { desc = "[F]ind [T]odo" })
+    return
+end
 local function error(msg) vim.notify(msg, vim.log.levels.error) end
 
 local function fill_qf(lines, title, funcmod)
