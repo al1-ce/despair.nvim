@@ -1,5 +1,7 @@
 # despair.nvim
 
+A sister-project of [monolith.nvim](https://github.com/al1-ce/monolith.nvim).
+
 A soft fork of my monolith.nvim with removal of 90% of everything that's not completely necessary or that's related or is a plugin.
 
 Also it is a test to how much of plugins I really need and how much of them I can replace with native vim/neovim functionality and a way to learn actual inner workings and proper mappings.
