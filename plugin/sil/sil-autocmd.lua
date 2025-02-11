@@ -29,7 +29,8 @@ augroup reloadfileifchanged
 augroup END
 ]])
 
-    -- reopen at last edited place
+-- reopen at last edited place
+augroup("LastEditGoto", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     pattern = { "*" },
     callback = function()
@@ -40,5 +41,4 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 augroup("ToggleCursorLine", { clear = true })
 autocmd({"WinEnter", "BufEnter"}, { group = "ToggleCursorLine", pattern = "*", command = "setlocal cursorline" })
 autocmd({"WinLeave", "BufLeave"}, { group = "ToggleCursorLine", pattern = "*", command = "setlocal nocursorline" })
-
 
